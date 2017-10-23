@@ -1,0 +1,34 @@
+{
+  "name": "botbuilder-qna-maker",
+  "version": "1.0.0",
+  "description": "Calls Microsoft's QnA Maker service and returns an answer from that service. This can be used to build a bot whose logic is partially based on the QnA maker responses.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catcher-in-the-try/botbuilder-qna-maker.git"
+  },
+  "keywords": [
+    "botbuilder",
+    "qna",
+    "qna",
+    "maker",
+    "luis",
+    "bots",
+    "bot",
+    "bot",
+    "framework",
+    "botframework",
+    "microsoft",
+    "nlu",
+    "nlp"
+  ],
+  "author": "Anton Ivanov <anton@ivanov.hk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/catcher-in-the-try/botbuilder-qna-maker/issues"
+  },
+  "homepage": "https://github.com/catcher-in-the-try/botbuilder-qna-maker#readme"
+}
