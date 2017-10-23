@@ -6,8 +6,8 @@
 const QnA = require('./index');
 
 (async () => {
-  const serviceGuid = '4514ef7e-f6fb-44e8-a01f-29dc35dd2903';
-  const subscriptionKey = '4882cdde92a84e8595e534da2e17ddca';
+  const serviceGuid = '<INSERT SERVICE ID>';
+  const subscriptionKey = '<INSERT SUBSCRIPTION KEY>';
 
   try {
     const qna = new QnA(serviceGuid, subscriptionKey);
