@@ -30,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/catcher-in-the-try/botbuilder-qna-maker/issues"
   },
-  "homepage": "https://github.com/catcher-in-the-try/botbuilder-qna-maker#readme"
+  "homepage": "https://github.com/catcher-in-the-try/botbuilder-qna-maker#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
 }
