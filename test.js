@@ -17,4 +17,20 @@ const QnA = require('./index');
   } catch (error) {
     console.log(error);
   }
+
+  try {
+    const qna = new QnA(serviceGuid, subscriptionKey);
+    const questionAnwser = {add: {
+      qnaPairs: [{
+            answer: "Hello, How can I help you?",
+            question: "Hello"
+          }
+        ]
+      }
+    };
+    const state = await qna.updateKnowledgeBase(questionAnwser);
+    console.log(state);
+  } catch (error) {
+    console.log(error);
+  }
 })();

@@ -84,6 +84,97 @@ class QnA {
       throw new Error('Invalid answer received from the QnA server.');
     }
   }
+
+  /**
+   * Sends the json object to the QnA maker and updates the knowledgeBase
+   * json formate as string, without any metadata.
+   * ex:jsonObject
+    { 
+      "add": {
+        "qnaPairs": [
+          {
+            "answer": "Hello, How can I help you?",
+            "question": "Hello"
+          }
+        ],
+        "urls": [
+          "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs"
+        ]
+      },
+      "delete": {
+        "qnaPairs": [
+          {
+            "answer": "The QnA Maker tool ingests and matches data in UTF-16 encoding. This means that any language should work as is. Having said that, we have only extensively tested the relevance of the service for EN yet.",
+            "question": "Does the QnA Maker support non-EN languages?"
+          }
+        ]
+      }
+    }
+   * @param {jsonObject} 
+   * @returns {string} The value of string is `00` when the QnA maker has done without error.
+  */
+  updateRawKnowledgeBase(jsonObject) {
+    return new Promise((resolve, reject) => {
+      let url =
+        `${this.host}/knowledgebases/${this.serviceGuid}`;
+      request.patch(
+        // Request params:
+        {
+          url: url,
+          method: 'PATCH',
+          json: true,
+          body: jsonObject,
+          headers: {
+            'Content-Type': 'application/json',
+            'Ocp-Apim-Subscription-Key': this.subscriptionKey,
+          },
+        },
+        // Callback:
+        (error, response, body) => {
+          if (error) reject(error);
+          resolve(body);
+        }
+      );
+    });
+  }
+
+  /**
+   * Sends the json object to the QnA maker and updates the knowledgeBase
+   * json formate as string, without any metadata.
+   * ex:jsonObject
+    { 
+      "add": {
+        "qnaPairs": [
+          {
+            "answer": "Hello, How can I help you?",
+            "question": "Hello"
+          }
+        ],
+        "urls": [
+          "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs"
+        ]
+      },
+      "delete": {
+        "qnaPairs": [
+          {
+            "answer": "The QnA Maker tool ingests and matches data in UTF-16 encoding. This means that any language should work as is. Having said that, we have only extensively tested the relevance of the service for EN yet.",
+            "question": "Does the QnA Maker support non-EN languages?"
+          }
+        ]
+      }
+    }
+   * @param {jsonObject} 
+   * @returns {string} The value of string is `00` when the QnA maker has done without error.
+   */
+  async updateKnowledgeBase(jsonObject) {
+    let rawData = await this.updateRawKnowledgeBase(jsonObject);
+    if (typeof rawData == 'undefined') {
+      return "00";
+    } else {
+      console.log(rawData);
+      throw new Error('Invalid QuesttionAnswer added from the QnA server.');
+    }
+  }
 }
 
 /** The answer returned by QnA maker when there is no suitable answer found. */
